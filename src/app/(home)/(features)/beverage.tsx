@@ -10,6 +10,7 @@ const caseCards = [
 		title: "케이터링 카달로그 다운로드",
 		description: "케이터링이 가능한 메뉴를 카달로그로 확인하세요.",
 		cardBackground: "linear-gradient(135deg, #17265F 0%, #1B2E74 58%, #3157B7 100%)",
+		catalogueUrl: "#",
 		featured: true,
 	},
 	{
@@ -18,6 +19,7 @@ const caseCards = [
 		title: "프라이빗 스낵바 카달로그 다운로드",
 		description: "사무실, 라운지, 대기 공간에 맞춰 음료와 간식을 보기 좋고 이용하기 쉬운 형태로 준비합니다.",
 		cardBackground: "linear-gradient(135deg, #0F4EA8 0%, #1971E5 56%, #78B7FF 100%)",
+		catalogueUrl: "#",
 	},
 	{
 		brand: "Gift Package",
@@ -25,6 +27,7 @@ const caseCards = [
 		title: "시즌 기프트 카달로그 다운로드",
 		description: "직원 복지, 고객 감사, 행사 답례품까지 필요한 예산과 수량에 맞춰 패키지 구성을 제안합니다.",
 		cardBackground: "linear-gradient(135deg, #0B5278 0%, #147DB8 56%, #65C9F4 100%)",
+		catalogueUrl: "#",
 	},
 ];
 
@@ -45,6 +48,8 @@ function HeaderImage() {
 }
 
 function CaseCard({ card }: { card: (typeof caseCards)[number] }) {
+	const isExternalCatalogueUrl = card.catalogueUrl.startsWith("http");
+
 	return (
 		<article
 			className={[
@@ -74,13 +79,17 @@ function CaseCard({ card }: { card: (typeof caseCards)[number] }) {
 					{card.name}
 				</Text.xs>
 				<Action.Link
-					href="/service-introduction"
-					rounded="full"
-					px={11}
-					py={11}
+					href={card.catalogueUrl}
+					target={isExternalCatalogueUrl ? "_blank" : undefined}
+					rel={isExternalCatalogueUrl ? "noopener noreferrer" : undefined}
+					px={0}
+					py={0}
+					rounded={0}
 					style={{ backgroundColor: "transparent" }}
-					aria-label={`${card.name} 자세히 보기`}
+					className="text-white underline underline-offset-4 transition-opacity hover:opacity-75"
+					aria-label={`${card.name} 카달로그 다운로드`}
 				>
+					<Action.Text label="카달로그 다운로드" TextColor="white" weight="bold" size="sm" />
 					<Action.Icon icon="arrow-right" size="sm" color="#FFFFFF" />
 				</Action.Link>
 			</div>
