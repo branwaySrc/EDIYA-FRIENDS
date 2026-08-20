@@ -5,8 +5,9 @@ export const contentBoxSize = {
 } as const;
 
 export const badgeSize = {
-	rounded: 8,
+	rounded: 10,
 	px: 16,
+	py: 8,
 } as const;
 
 export const homeContainerClassName = "mx-auto w-full max-w-[1100px] px-4";

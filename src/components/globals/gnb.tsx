@@ -7,10 +7,10 @@ import { Menu, X } from "lucide-react";
 import { Action } from "@/components/base/actions/actions";
 
 const GNB_LINKS = [
-	{ label: "스토리", href: "/brand" },
-	{ label: "케이터링", href: "/menu" },
-	{ label: "스낵바", href: "/stores" },
-	{ label: "시즌 기프트", href: "/news" },
+	{ label: "스토리", href: "/story" },
+	{ label: "케이터링", href: "/catering" },
+	{ label: "스낵바", href: "/snackbar" },
+	{ label: "시즌 기프트", href: "/gift" },
 	{ label: "FAQ", href: "/faq" },
 ] as const;
 

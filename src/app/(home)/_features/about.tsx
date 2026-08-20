@@ -15,7 +15,7 @@ export function About() {
 			<aside className="flex min-h-[520px] items-center justify-start px-4 py-20 lg:min-h-[640px] lg:px-16" style={{ backgroundColor: ediyaBlue }}>
 				<div className="flex w-full max-w-md flex-col gap-16">
 					<div className="flex flex-col gap-6">
-						<Badge backgroundColor="#FFFFFF" color={ediyaBlue} px={16} weight="bold">
+						<Badge backgroundColor="#FFFFFF" rounded={10} color={ediyaBlue} px={16} weight="bold">
 							About Us
 						</Badge>
 						<article className="flex flex-col gap-2">

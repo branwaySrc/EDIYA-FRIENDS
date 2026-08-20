@@ -22,7 +22,7 @@ export function Badge({
 	backgroundColor = "#F1F5F9",
 	className,
 	color,
-	px = 12,
+	px = 15,
 	py = 6,
 	rounded = 6,
 	style,
@@ -40,9 +40,9 @@ export function Badge({
 				...style,
 			}}
 		>
-			<Text.xs as="span" TextColor={TextColor} weight={weight} style={color ? { color } : undefined}>
+			<Text.sm as="span" TextColor={TextColor} weight={weight} style={color ? { color } : undefined}>
 				{children}
-			</Text.xs>
+			</Text.sm>
 		</span>
 	);
 }

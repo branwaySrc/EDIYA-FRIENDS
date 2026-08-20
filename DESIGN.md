@@ -145,6 +145,15 @@ Home-specific patterns live here so future section work can continue from the cu
 - Use `Text.sm` for card descriptions and CTA labels.
 - Keep badge labels short and functional, such as "서비스 소개", "스토리", or "Who We Are".
 
+### Global CTA
+
+- Use `Cta` for the quick consultation form near the end of the home flow.
+- Keep the CTA form as a centered wide white panel on a pale blue section surface.
+- Arrange company and manager fields in the left column, service and phone fields in the right column on large screens.
+- Use a native required service select with the options "케이터링 문의", "스낵바 문의", "시즌기프트 문의", and "협업문의".
+- Place the primary "빠른 상담하기" submit button at the lower-right edge of the wide form on large screens.
+- Place the consultant image below the wide form so the form remains the first scannable action.
+
 ### Global Navigation Relationship
 
 - The default home navigation should use `Gnb type="dynamic"` behavior.
@@ -152,6 +161,51 @@ Home-specific patterns live here so future section work can continue from the cu
 - After scroll, the GNB becomes white, swaps to `logo.svg`, and uses default text color.
 - Navigation links should be created with `Action.Link`.
 - Nav hover underline may use the `hoverLine` animation, expanding from the center with primary color.
+
+### Page Hero
+
+- Use `src/app/_components/Page-Hero.tsx` for reusable sub-page headers.
+- `PageHero` should place the page title on the left and the page description on the right on large screens.
+- The default page hero background is `ediyaBlue`, with a `backgroundColor` prop for route-specific color changes.
+- Keep page-specific body content outside `PageHero` so each route can compose its own sections.
+
+### Route Loading
+
+- Use `src/app/loading.tsx` for shared App Router fallback UI.
+- Keep the loading UI in `src/app/_components/LoadingPage.tsx` so route-level loading can reuse one branded skeleton.
+- Match `PageHero` for sub-page loading states: left title skeleton and right description skeleton.
+- Loading skeletons should be lightweight, accessible, and use brand surfaces rather than generic full-screen spinners.
+- Use the shared 500ms route loading preview delay when we need the fallback state to be visible during page transitions.
+
+### Privacy Agreement
+
+- Use `src/app/others/(privacy-policy)/page.tsx` for the CTA privacy agreement detail page.
+- The privacy agreement page should present collection items, purpose, and retention period in a simple table before the consent notes.
+- On mobile, present privacy agreement rows as stacked cards instead of horizontal overflow.
+- Link to the route with Next `Link`; because `(privacy-policy)` is a route group, the public URL is `/others`.
+
+### Not Found Fallback
+
+- Use `src/app/not-found.tsx` for unmatched routes and route-level `notFound()` cases.
+- Keep the fallback page minimal: white background, centered pale alert icon, concise Korean guidance text, and a quiet home return action.
+- The fallback should feel calm and helpful, not like a technical error screen.
+
+## (Catering)
+
+### Structure
+
+- The catering route entry is `src/app/catering/page.tsx`.
+- Keep the catering page as a composition layer: `PageHero` first, then section-level feature components.
+- Major catering sections live in `src/app/catering/_features`.
+- Use one TSX file per section, currently `problem.tsx`, `solve.tsx`, `solution.tsx`, and `catering-cta.tsx`.
+- The section flow should read like a persuasive business landing page: problem framing, smarter alternative, concrete solution proof points, then consultation CTA.
+
+### Visual Rhythm
+
+- Use generous vertical spacing so the long business copy feels premium rather than dense.
+- Problem and solve sections can use centered editorial layouts inspired by reference pages, with a compact badge or vertical divider to create pause.
+- Solution sections may combine a wide rounded image with compact proof-point cards underneath.
+- Keep EDIYA blue as the primary emphasis color; avoid introducing unrelated accent systems.
 
 ## Pattern Log
 
@@ -181,6 +235,14 @@ Add confirmed design patterns here as we establish them.
 | 2026-08-06 | Footer | Use a two-column footer with logo, service ownership, contact, operator, and copyright details | Keeps legal and contact information scannable without crowding the page bottom |
 | 2026-08-06 | App Structure | Split home sections into `Hero`, `Intro`, and `About` feature components with shared size tokens | Keeps `page.tsx` focused on composition while each section owns its own UI details |
 | 2026-08-06 | Home Film | Add a customer-playable YouTube film section with the same header rhythm as `Intro` | Keeps embedded video content consistent with the existing home section hierarchy |
+| 2026-08-18 | Global CTA | Use a centered wide consultation form with the consultant image below it | Makes the CTA form easier to scan while preserving brand imagery as supporting context |
+| 2026-08-18 | Page Hero | Use reusable `PageHero` with left title, right description, and configurable background color | Keeps sub-page headers consistent while allowing route-specific composition |
+| 2026-08-18 | Route Loading | Use a shared `LoadingPage` skeleton that mirrors `PageHero` | Gives route transitions immediate visual feedback while preserving the page rhythm |
+| 2026-08-18 | Route Loading | Apply a shared 500ms loading preview delay to route pages | Makes the loading skeleton visible during intentionally staged page transitions |
+| 2026-08-18 | Privacy Agreement | Use a table-based privacy agreement page linked from CTA by Next `Link` | Makes consent terms easy to inspect and keeps navigation aligned with App Router |
+| 2026-08-18 | Privacy Agreement | Convert the privacy table into stacked row cards on mobile | Avoids horizontal overflow and keeps consent details readable on small screens |
+| 2026-08-18 | Not Found Fallback | Add a centered minimal 404 fallback with a pale alert icon and home action | Gives invalid routes a calm, branded recovery path |
+| 2026-08-18 | Catering Page | Compose catering content from section files under `src/app/catering/_features` | Keeps the page maintainable while supporting a persuasive landing-page narrative |
 
 ## Decision Log
 

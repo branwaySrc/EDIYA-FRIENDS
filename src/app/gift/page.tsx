@@ -1,33 +1,23 @@
+import { waitForRouteLoadingPreview } from "@/app/_components/loading-delay";
+import { PageHero } from "@/app/_components/Page-Hero";
 import { Action } from "@/components/base/actions/actions";
-import { Badge } from "@/components/base/badge";
-import { Heading, Text } from "@/components/base/typography";
+import { Text } from "@/components/base/typography";
 import { ediyaBlue } from "@/constants/colors";
 
-type SubPageShellProps = {
-	badge: string;
-	title: string;
-	description: string;
-	points: string[];
-};
+const points = ["시즌별 선물 패키지 구성", "수량과 예산에 맞춘 제안", "감사와 환영의 메시지를 담은 선택"];
 
-export function SubPageShell({ badge, title, description, points }: SubPageShellProps) {
+export default async function GiftPage() {
+	await waitForRouteLoadingPreview();
+
 	return (
 		<main className="bg-white">
-			<section className="bg-[#111E3A] px-4 pb-20 pt-36 text-white">
-				<div className="mx-auto flex w-full max-w-[1100px] flex-col gap-8">
-					<Badge backgroundColor="rgba(255,255,255,0.14)" TextColor="white" rounded={999} px={16} py={8} weight="bold">
-						{badge}
-					</Badge>
-					<div className="flex max-w-3xl flex-col gap-5">
-						<Heading.lg as="h1" TextColor="white" weight="bold">
-							{title}
-						</Heading.lg>
-						<Text.base TextColor="white" className="opacity-85">
-							{description}
-						</Text.base>
-					</div>
-				</div>
-			</section>
+			<PageHero
+				src="/typos/SeasonGift.svg"
+				alt="season-gift-image"
+				className="max-w-74"
+				title="시즌 기프트"
+				description="품격 있는 비즈니스 시즌 기프트를 제공합니다."
+			/>
 
 			<section className="px-4 py-20">
 				<div className="mx-auto grid w-full max-w-[1100px] gap-4 md:grid-cols-3">

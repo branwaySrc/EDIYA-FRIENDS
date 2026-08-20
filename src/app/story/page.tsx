@@ -4,19 +4,19 @@ import { Action } from "@/components/base/actions/actions";
 import { Text } from "@/components/base/typography";
 import { ediyaBlue } from "@/constants/colors";
 
-const points = ["최소 주문 수량과 상담 방식", "배송 및 준비 가능 지역", "견적과 구성 확정 절차"];
+const points = ["커피 케이터링 소개", "프라이빗 스낵바 운영 안내", "시즌 기프트 구성 예시"];
 
-export default async function FaqPage() {
+export default async function StoryPage() {
 	await waitForRouteLoadingPreview();
 
 	return (
 		<main className="bg-white">
 			<PageHero
-				src="/typos/FAQ.svg"
-				alt="ediya-faq"
-				className="max-w-32"
-				title="자주 묻는 질문"
-				description="비즈니스 고객분들이 자주 묻는 질문을 모았습니다."
+				src="/typos/Story.svg"
+				alt="ediya-friends-story"
+				className="max-w-37"
+				title="이디야 프렌즈 스토리"
+				description="비즈니스의 품격을 만드는 이디야 프렌즈."
 			/>
 
 			<section className="px-4 py-20">
